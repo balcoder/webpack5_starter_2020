@@ -11,6 +11,7 @@ module.exports = {
     filename: "[name].[contenthash].js", //[name] will be replaced bykey of entry obj above(bundle)
     clean: true, //delete old bundles
   },
+  devtool: "source-map",
   devServer: {
     static: {
       directory: path.resolve(__dirname, "dist"),
