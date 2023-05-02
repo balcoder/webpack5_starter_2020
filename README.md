@@ -12,3 +12,19 @@ Clone the repository to your chosen folder and run
 ## To use for production
 
 Change the webpckconfig file section from mode: "development" to mode: "production" and now your dist folder will be made with production ready files.
+
+## To add an svg and make sprite in bundle
+
+import all the SVG's you need into your code and use them within an SVG tag with the SVG's id:
+
+```
+// *.js
+import "/path/to/icons/logo.svg";
+```
+
+```
+// *.html
+<svg class="icon" aria-hidden="true">
+  <use xlink:href="#logo"></use>
+</svg>
+```

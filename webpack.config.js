@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin =
+//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   mode: "development",
@@ -42,8 +42,13 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|svg|jpeg|jpg|gif)$/i,
+        //test: /\.(png|svg|jpeg|jpg|gif)$/i,
+        test: /\.(png|jpeg|jpg|gif)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.svg$/,
+        use: "svg-sprite-loader",
       },
     ],
   },
