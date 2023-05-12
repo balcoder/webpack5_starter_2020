@@ -6,8 +6,11 @@ This is a webpack 5 starter tool to get you up and running with a webapp quickly
 
 Clone the repository to your chosen folder and run
 
-`npm run build` _builds the dist folder with all your files_
-`npm run dev` _does same as build above but also runs the dev server and opens browser on port 3000 and tracks changes use this while developing_
+`npm install` _installs dev dependencies_
+
+`npm run dev` _does same as build below but also runs the dev server and opens browser on port 3000 and tracks changes use this while developing_
+
+`npm run build` _builds the dist folder with all your files. make sure to change mode to production (as per below) in the webpack.config file if you want to compress all images and compress all html js and css for production ready code_
 
 ## To use for production
 
@@ -28,3 +31,17 @@ import "/path/to/icons/logo.svg";
   <use xlink:href="#logo"></use>
 </svg>
 ```
+
+## To add images
+
+```
+// *.js
+import "./styles/main.scss";
+import hotel1 from "./assets/img/hotel-1.jpg";
+
+const hotel1Img = document.getElementById("hotel-1");
+hotel1Img.src = hotel1;
+
+```
+
+To compress just run `npm run build` and change the webpckconfig file section from mode: "development" to mode: "production" and now your dist folder will be made with production ready files.

@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const BundleAnalyzerPlugin =
-//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -12,7 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js", //[name] will be replaced bykey of entry obj above(bundle)
     clean: true, //delete old bundles
-    assetModuleFilename: "[name][ext]", //keep the original name
+    assetModuleFilename: "images/[name][ext]", //keep the original name
   },
   devtool: "source-map",
   devServer: {
@@ -52,12 +51,30 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    minimizer: [
+      "...",
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            // Lossy optimization with custom option
+            plugins: [
+              ["gifsicle", { interlaced: true }],
+              ["imagemin-mozjpeg", { progressive: true, quality: 90 }],
+              ["imagemin-pngquant", { quality: [0.5, 0.9] }],
+            ],
+          },
+        },
+      }),
+    ],
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       title: "Webpack App",
       filename: "index.html",
       template: "src/template.html",
     }),
-    //new BundleAnalyzerPlugin(),
   ],
 };

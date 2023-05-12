@@ -15,13 +15,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   margin: 0;
   padding: 20px;
 }
 
-.container {
+.container,
+.pic {
   background-color: $secondary-color;
   border-radius: 10px;
   box-shadow: $box-shadow;
@@ -31,13 +31,24 @@ body {
   width: 800px;
 }
 
+.pic {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__hotel {
+    flex: 1;
+  }
+}
+
 h3 {
   margin: 0;
   opacity: 0.5;
   letter-spacing: 2px;
 }
 
-img {
+#laugh {
   width: 100px;
   margin-bottom: 20px;
 }
